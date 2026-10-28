@@ -15,11 +15,11 @@ ORDER BY total_discount_given DESC;
 
 -- Q9. Which products have a discount above 40% and still hold a lot of stock?
 SELECT DISTINCT name, discount_percent, available_quantity,
-       ROUND((mrp - discounted_selling_price) * available_quantity, 2) AS discount_loss
+       ROUND((mrp - discounted_selling_price) * available_quantity, 2) AS discount_value
 FROM zepto
 WHERE discount_percent > 40
   AND out_of_stock = 'FALSE'
-ORDER BY discount_loss DESC
+ORDER BY discount_value DESC
 LIMIT 15;
 
 -- Q10. Which in-stock products have no discount but a lot of stock?
